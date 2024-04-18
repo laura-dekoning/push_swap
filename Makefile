@@ -6,7 +6,7 @@
 #    By: lade-kon <lade-kon@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/04/17 17:52:22 by lade-kon      #+#    #+#                  #
-#    Updated: 2024/04/18 17:39:06 by lade-kon      ########   odam.nl          #
+#    Updated: 2024/04/18 18:14:45 by lade-kon      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,8 +54,7 @@ $(LIBFT_A):
 	@make -C $(LIBFT_DIR) > /dev/null
 
 $(NAME) : $(OBJ) $(LIBFT_A)
-	@$(MAKE) -C libft
-	$(CC) $(CFLAGS) $(OBJ) libft/libft.a -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(INCLUDES) $(LIBFT_A) -o $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
@@ -70,13 +69,12 @@ update:
 	@git submodule update --init --recursive --remote
 
 clean:
-	@rm -rf $(OBJ)
-	@rm -rf obj
-	@$(MAKE) clean -C libft
+	@rm -rf $(OBJ_DIR)
+	@make -C $(LIBFT_DIR) clean > /dev/null
 
 fclean: clean
 	@rm -f $(NAME)
-	@$(MAKE) fclean -C libft
+	@make -C $(LIBFT_DIR) fclean > /dev/null
 
 re: fclean all
 

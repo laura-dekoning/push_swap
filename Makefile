@@ -6,7 +6,7 @@
 #    By: lade-kon <lade-kon@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/04/17 17:52:22 by lade-kon      #+#    #+#                  #
-#    Updated: 2024/04/17 19:23:53 by lade-kon      ########   odam.nl          #
+#    Updated: 2024/04/18 17:39:06 by lade-kon      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,9 +31,13 @@ SRC_FILES		:= 	push_swap.c \
 					rotate.c \
 					reverse_rotate.c \
 					sorting_utils.c \
-					sorting.c \
-					big_sort.c \
-					small_sort.c \
+					pre_sort.c \
+					select_sort.c \
+					two_sort.c \
+					three_sort.c \
+					four_sort.c \
+					five_sort.c \
+					radix_sort.c \
 					error.c
 SRC				:=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))
 

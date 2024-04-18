@@ -1,40 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   push_swap.c                                        :+:    :+:            */
+/*   free_all.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/04/17 19:30:18 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/04/18 16:37:15 by lade-kon      ########   odam.nl         */
+/*   Created: 2024/04/18 16:23:24 by lade-kon      #+#    #+#                 */
+/*   Updated: 2024/04/18 16:27:52 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	push_swap(char **input)
+void	free_list(t_node **head)
 {
-	t_node	*
+	t_node	*temp;
+	t_node	*next;
+
+	temp = *head;
+	next = NULL;
+	while (temp)
+	{
+		next = temp->next;
+		free (temp);
+		temp = next;
+	}
+	*head = NULL;
 }
 
-
-int	main(int argc, char **argv)
+void	free_input(char **input)
 {
-	char **input;
+	int	i;
 
-	if (argc < 2 || argv[1][0] == '\0')
-		return (0);
-	else if (argc == 2)
+	i = 0;
+	while (input[i])
 	{
-		input = ft_split(argv[1], ' ');
-		if (!input)
-			error_message("Something went wrong!");
-		push_swap(input);
+		free (input[i]);
+		i++;
 	}
-	else
-	{
-		input = &argv[1];
-		push_swap(input);
-	}
-	return (0);
+	free (input);
 }

@@ -1,40 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   push_swap.c                                        :+:    :+:            */
+/*   select_sort.c                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/04/17 19:30:18 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/04/18 16:37:15 by lade-kon      ########   odam.nl         */
+/*   Created: 2024/04/18 17:24:27 by lade-kon      #+#    #+#                 */
+/*   Updated: 2024/04/18 17:25:39 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	push_swap(char **input)
+void	select_sort(t_node **stack_a, t_node **stack_b)
 {
-	t_node	*
-}
+	int	nodes;
 
-
-int	main(int argc, char **argv)
-{
-	char **input;
-
-	if (argc < 2 || argv[1][0] == '\0')
-		return (0);
-	else if (argc == 2)
-	{
-		input = ft_split(argv[1], ' ');
-		if (!input)
-			error_message("Something went wrong!");
-		push_swap(input);
-	}
+	nodes = count_nodes(stack_a);
+	if (nodes == 2)
+		sort_two(stack_a);
+	else if (nodes == 3)
+		sort_three(stack_a);
+	else if (nodes == 4 || nodes == 5)
+		sort_four_or_five(stack_a, stack_b);
 	else
-	{
-		input = &argv[1];
-		push_swap(input);
-	}
-	return (0);
+		radix_sort(stack_a, stack_b);
 }

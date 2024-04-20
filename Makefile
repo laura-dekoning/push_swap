@@ -6,14 +6,14 @@
 #    By: lade-kon <lade-kon@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/04/17 17:52:22 by lade-kon      #+#    #+#                  #
-#    Updated: 2024/04/18 18:14:45 by lade-kon      ########   odam.nl          #
+#    Updated: 2024/04/20 17:05:11 by lade-kon      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			:=	push_swap
 
 CC				:=	cc
-CFLAGS			:= -Wall -Werror -Wextra -g -fsanitize=address
+CFLAGS			:= -Wall -Werror -Wextra #-g -fsanitize=address
 
 LIBFT_DIR		:=	lib/libft
 LIBFT_A			:=	$(LIBFT_DIR)/libft.a
@@ -23,22 +23,31 @@ INCLS_LIBFT		:=	$(LIBFT_DIR)/incl
 INCLUDES		:=	-I $(INCLS_PUSH_SWAP) -I $(INCLS_LIBFT)
 
 SRC_DIR			:=	src
+SRC_OPERATIONS	:=	operations
+SRC_SORTING		:=	sorting
+
+SRC_DIRS		:= $(SRC_DIR) $(SRC_OPERATIONS) $(SRC_SORTING)
+
 SRC_FILES		:= 	push_swap.c \
-					input_check.c \
 					stack_build.c \
+					sorting_utils.c \
+					check_input.c \
+					free_all.c \
+					error.c \
+					$(addprefix $(SRC_OPERATIONS)/, \
 					swap.c \
 					push.c \
 					rotate.c \
-					reverse_rotate.c \
-					sorting_utils.c \
+					reverse_rotate.c ) \
+					$(addprefix $(SRC_SORTING)/, \
 					pre_sort.c \
 					select_sort.c \
 					two_sort.c \
 					three_sort.c \
 					four_sort.c \
 					five_sort.c \
-					radix_sort.c \
-					error.c
+					radix_sort.c )
+
 SRC				:=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
 OBJ_DIR			:=	obj
@@ -58,6 +67,7 @@ $(NAME) : $(OBJ) $(LIBFT_A)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(addprefix $(OBJ_DIR)/, $(SRC_DIRS))
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 norminette:

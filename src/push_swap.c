@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/17 19:30:18 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/04/18 16:37:15 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/04/20 17:15:41 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,18 @@
 
 int	push_swap(char **input)
 {
-	t_node	*
+	t_node	*stack_a;
+	t_node	*stack_b;
+
+	if (valid_input(input) == false)
+		error_message("Input is not valid!");
+	stack_a = make_list(input);
+	stack_b = NULL;
+	if (is_list_sorted(stack_a))
+		return (free_list(&stack_a), 0);
+	pre_sort(&stack_a);
+	select_sort(&stack_a, &stack_b);
+	return (free_list(&stack_a), 0);
 }
 
 
@@ -28,8 +39,9 @@ int	main(int argc, char **argv)
 	{
 		input = ft_split(argv[1], ' ');
 		if (!input)
-			error_message("Something went wrong!");
+			error_message("Something went wrong while splitting!");
 		push_swap(input);
+		free_input(input);
 	}
 	else
 	{

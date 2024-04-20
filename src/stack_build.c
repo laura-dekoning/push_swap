@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/18 12:33:56 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/04/18 16:29:00 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/04/20 17:15:24 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	add_to_stack(t_node **stack_a, t_node *new)
 		*stack_a = new;
 	else
 	{
-		last = find_last_node(stack_a);
+		last = find_last_node(*stack_a);
 		last->next = new;
 	}
 }
@@ -42,7 +42,7 @@ t_node	*before_last_node(t_node **head, t_node *last)
 {
 	t_node	*current_node;
 
-	current_node = head;
+	current_node = *head;
 	while (current_node->next != last)
 		current_node = current_node->next;
 	return (current_node);
@@ -63,19 +63,16 @@ t_node	*find_last_node(t_node *stack_a)
 t_node	*make_list(char **input)
 {
 	t_node	*head;
-	long	data;
+	int		data;
 	int		i;
 
 	head = NULL;
 	i = 0;
 	while (input[i])
 	{
-		data = ft_atol(input[i]);
-		if (data < INT_MIN || data > INT_MAX)
-		{
-			free_list(&head);
-			return (error_message("Something went wrong!"), 0);
-		}
+		data = ft_atoi(input[i]);
 		add_to_stack(&head, create_node(data));
+		i++;
 	}
+	return (head);
 }

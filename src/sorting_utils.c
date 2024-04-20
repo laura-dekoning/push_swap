@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/18 16:38:34 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/04/18 17:16:59 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/04/20 16:26:45 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,14 @@ t_node	*is_lowest_index(t_node **stack_a)
 {
 	t_node	*lowest;
 	t_node	*current;
+
+	lowest = *stack_a;
+	current = *stack_a;
+	while (current)
+	{
+		if (current->index < lowest->index)
+			lowest = current;
+		current = current->next;
+	}
+	return (lowest);
 }

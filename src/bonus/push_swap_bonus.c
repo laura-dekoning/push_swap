@@ -1,52 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   push_swap.c                                        :+:    :+:            */
+/*   push_swap_bonus.c                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/04/17 19:30:18 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/04/24 16:29:47 by lade-kon      ########   odam.nl         */
+/*   Created: 2024/04/20 15:40:38 by lade-kon      #+#    #+#                 */
+/*   Updated: 2024/04/24 16:07:35 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
-int	push_swap(char **input)
+int	push_swap_checker(char **input)
 {
-	t_node	*stack_a;
-	t_node	*stack_b;
-
 	if (valid_input(input) == false)
 		error_message("Input is not valid!");
-	stack_a = make_list(input);
-	stack_b = NULL;
-	if (is_list_sorted(stack_a))
-		return (free_list(&stack_a), 0);
-	pre_sort(&stack_a);
-	select_sort(&stack_a, &stack_b);
-	return (free_list(&stack_a), 0);
-}
 
+}
 
 int	main(int argc, char **argv)
 {
-	char **input;
+	char	**numbers;
+	char	*input;
+	char	**operations;
 
 	if (argc < 2 || argv[1][0] == '\0')
 		return (0);
-	else if (argc == 2)
+	
+	input = get_next_line(0);
+	operations = ft_split(input, '\n');
+	if (argc == 2)
 	{
-		input = ft_split(argv[1], ' ');
-		if (!input)
+		numbers = ft_split(argv[1], ' ');
+		if (!numbers)
 			error_message("Something went wrong while splitting!");
-		push_swap(input);
-		free_input(input);
+//voer alle operations uit met een checker functie oid.
+		free_input(numbers);
 	}
 	else
 	{
-		input = &argv[1];
-		push_swap(input);
+		numbers = &argv[1];
+//voer alle operations uit met een checker functie oid.
 	}
+
 	return (0);
 }

@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   push_swap_bonus.c                                  :+:    :+:            */
+/*   push_swap_bonus.h                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/04/20 15:40:38 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/04/20 17:21:00 by lade-kon      ########   odam.nl         */
+/*   Created: 2024/04/24 16:03:50 by lade-kon      #+#    #+#                 */
+/*   Updated: 2024/04/24 16:04:49 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef PUSH_SWAP_BONUS_H
+# define PUSH_SWAP_BONUS_H
 
-/*https://medium.com/@oduwoledare/42-push-swap-explained-psuedocodes-ba8108339556*/
+# include "push_swap.h"
 
-int	main(void)
+typedef	struct 		s_node
 {
-	char	*input;
-	char	**operations;
+	int				data;
+	struct s_node	*next;
+}					t_node;
 
-	input = get_next_line(1);
-	operations = ft_split(input, '\n');
 
-	return (0);
-}
+
+
+#endif

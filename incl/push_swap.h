@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/17 19:25:22 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/04/20 17:01:01 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/04/24 17:03:12 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,21 @@ void	two_sort(t_node **stack_a);
 void	three_sort(t_node **stack_a);
 void	four_sort(t_node **stack_a, t_node **stack_b, int nodes);
 void	five_sort(t_node **stack_a, t_node **stack_b, int nodes);
-void	radix_sort(t_node **stack_a, t_node **stack_b, int nodes);
+void	radix_sort(t_node **stack_a, t_node **stack_b);
 
 /*Utils*/
 int		count_nodes(t_node **head);
-bool	is_list_sorted(t_node *head);
+int		is_list_sorted(t_node *head);
 t_node	*is_lowest_index(t_node **stack_a);
 
+
+
+/*List test functions*/
+void	print_data_node(t_node *node);
+void	print_index_node(t_node *node);
+void	print_data_list(t_node *head);
+void	print_index_list(t_node *head);
+void	print_next_list(t_node *head);
+void	print_arguments(char **string);
 
 # endif

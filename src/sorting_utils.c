@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/18 16:38:34 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/04/20 16:26:45 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/04/24 17:08:49 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,23 @@ int	count_nodes(t_node **head)
 		return (0);
 	nodes = 0;
 	current_node = *head;
-	while (current_node->next != NULL)
+	while (current_node != NULL)
 	{
-		nodes++;
 		current_node = current_node->next;
+		nodes++;
 	}
 	return (nodes);
 }
 
-bool	is_list_sorted(t_node *head)
+int	is_list_sorted(t_node *head)
 {
 	while (head != NULL && head->next != NULL)
 	{
 		if (head->data > head->next->data)
-			return (false);
+			return (0);
 		head = head->next;
 	}
-	return (true);
+	return (1);
 }
 
 t_node	*is_lowest_index(t_node **stack_a)

@@ -6,7 +6,7 @@
 #    By: lade-kon <lade-kon@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/04/17 17:52:22 by lade-kon      #+#    #+#                  #
-#    Updated: 2024/04/20 17:05:11 by lade-kon      ########   odam.nl          #
+#    Updated: 2024/04/24 16:48:53 by lade-kon      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRC_FILES		:= 	push_swap.c \
 					check_input.c \
 					free_all.c \
 					error.c \
+					list_tests.c \
 					$(addprefix $(SRC_OPERATIONS)/, \
 					swap.c \
 					push.c \

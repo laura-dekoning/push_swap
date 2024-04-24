@@ -6,11 +6,12 @@
 #    By: lade-kon <lade-kon@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/04/17 17:52:22 by lade-kon      #+#    #+#                  #
-#    Updated: 2024/04/24 16:48:53 by lade-kon      ########   odam.nl          #
+#    Updated: 2024/04/24 17:55:55 by lade-kon      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			:=	push_swap
+NAME_BONUS		:=	checker
 
 CC				:=	cc
 CFLAGS			:= -Wall -Werror -Wextra #-g -fsanitize=address
@@ -25,8 +26,9 @@ INCLUDES		:=	-I $(INCLS_PUSH_SWAP) -I $(INCLS_LIBFT)
 SRC_DIR			:=	src
 SRC_OPERATIONS	:=	operations
 SRC_SORTING		:=	sorting
+SRC_BONUS		:=	bonus
 
-SRC_DIRS		:= $(SRC_DIR) $(SRC_OPERATIONS) $(SRC_SORTING)
+SRC_DIRS		:= $(SRC_DIR) $(SRC_OPERATIONS) $(SRC_SORTING) $(SRC_BONUS)
 
 SRC_FILES		:= 	push_swap.c \
 					stack_build.c \
@@ -48,12 +50,26 @@ SRC_FILES		:= 	push_swap.c \
 					four_sort.c \
 					five_sort.c \
 					radix_sort.c )
+SRC_FILES_BONUS	:=	$(addprefix $(SRC_BONUS)/, \
+					push_swap_bonus.c ) \
+					stack_build.c \
+					check_input.c \
+					free_all.c \
+					error.c \
+					$(addprefix $(SRC_OPERATIONS)/, \
+					swap.c \
+					push.c \
+					rotate.c \
+					reverse_rotate.c )
 
 SRC				:=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
 OBJ_DIR			:=	obj
+OBJ_DIR_BONUS	:=	bonus
 OBJ_FILES		:=	$(SRC_FILES:.c=.o)
+OBJ_FILES_BONUS	:=	$(SRC_FILES_BONUS:.c=.o)
 OBJ				:=	$(addprefix $(OBJ_DIR)/, $(OBJ_FILES))
+OBJ_BONUS		:=	$(addprefix $(OBJ_DIR)/, $(OBJ_FILES_BONUS))
 
 .PHONY : all clean fclean re
 
@@ -63,13 +79,18 @@ $(LIBFT_A):
 	@git submodule update --init --recursive --remote
 	@make -C $(LIBFT_DIR) > /dev/null
 
-$(NAME) : $(OBJ) $(LIBFT_A)
+$(NAME): $(OBJ) $(LIBFT_A)
 	$(CC) $(CFLAGS) $(OBJ) $(INCLUDES) $(LIBFT_A) -o $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(addprefix $(OBJ_DIR)/, $(SRC_DIRS))
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+bonus: $(NAME) $(NAME_BONUS)
+
+$(NAME_BONUS): $(OBJ_BONUS) $(LIBFT_A)
+	$(CC) $(CFLAGS) $(OBJ_BONUS) $(INCLUDES) $(LIBFT_A) -o $(NAME_BONUS)
 
 norminette:
 	@echo "${CYAN}🧐 Checking the Norm...${RESET}"

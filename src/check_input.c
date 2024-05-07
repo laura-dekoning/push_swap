@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/20 15:37:25 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/04/20 17:12:10 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/05/07 14:16:55 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ bool	valid_input(char **argv)
 /*	In this no_duplicates functions we also check if the numbers
 	are not larger then INT_MIN and INT_MAX so that it is not needed
 	when we make the list. */
-	
+
 bool	no_duplicates(char **argv)
 {
 	int		i;

@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/17 19:30:18 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/04/24 16:29:47 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/05/07 14:17:07 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,9 @@ int	push_swap(char **input)
 	return (free_list(&stack_a), 0);
 }
 
-
 int	main(int argc, char **argv)
 {
-	char **input;
+	char	**input;
 
 	if (argc < 2 || argv[1][0] == '\0')
 		return (0);

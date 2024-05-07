@@ -1,35 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   push_swap_bonus.h                                  :+:    :+:            */
+/*   node_tests.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/04/24 16:03:50 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/05/07 16:09:22 by lade-kon      ########   odam.nl         */
+/*   Created: 2024/04/24 16:41:19 by lade-kon      #+#    #+#                 */
+/*   Updated: 2024/05/07 14:20:33 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_BONUS_H
-# define PUSH_SWAP_BONUS_H
+#include "push_swap.h"
 
-# include "push_swap.h"
-
-typedef struct s_check
+void	print_index_node(t_node *node)
 {
-	int				data;
-	struct s_check	*next;
-}					t_check;
+	ft_printf("INDEX: %i\n", node->index);
+}
 
-typedef struct s_ops
+void	print_data_node(t_node *node)
 {
-	char			*data;
-	struct s_ops	*next;
-}					t_ops;
-
-t_ops	*get_input(int fd);
-void	ps_checker(char **numbers);
-void	check_operations(t_ops *operation, t_node **stack_a, t_node **stack_b);
-void	print_list_all(t_node *head);
-
-#endif
+	ft_printf("DATA: %i\n", node->data);
+}

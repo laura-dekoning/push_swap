@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/24 17:57:36 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/05/07 16:20:10 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/05/07 17:22:04 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ t_ops	*create_ops_node(char	*data);
 void	add_to_ops_list(t_ops **operations, t_ops *new);
 t_ops	*find_last_ops_node(t_ops *head);
 void	print_ops_list_all(t_ops *head);
-
-
 
 void	print_list_all(t_node *head)
 {
@@ -60,7 +58,7 @@ void	check_operations(t_ops *operations, t_node **stack_a, t_node **stack_b)
 		ft_rrr(stack_a, stack_b);
 }
 
-t_ops	*create_ops_node(char	*data)
+t_ops	*create_ops_node(char *data)
 {
 	t_ops	*new_node;
 
@@ -115,21 +113,16 @@ t_ops	*get_input(int fd)
 	t_ops	*head;
 	char	*line;
 
-	ft_printf("Im in get_input\n");
-	while (1)
+	head = NULL;
+	line = get_next_line(fd);
+	while (line)
 	{
+		add_to_ops_list(&head, create_ops_node(line));
+		// print_ops_list_all(head);
+		free(line);
 		line = get_next_line(fd);
-		ft_putstr_fd(line, STDOUT_FILENO);
-		if (line)
-		{
-			add_to_ops_list(&head, create_ops_node(line));
-			free(line);
-		}
-		else
-			break ;
 	}
-	print_ops_list_all(head);
-	return (head);
+	return (free(line), head);
 }
 
 void	ft_listprint(t_node *lst)
@@ -153,18 +146,18 @@ void	ps_checker(char **numbers)
 		error_message("Input is not valid!");
 	stack_a = make_list(numbers);
 	stack_b = NULL;
-	print_list_all(stack_a);
 	operations = get_input(STDIN_FILENO);
-	printf("Im here \n");
+	print_ops_list_all(operations);
 	i = 0;
 	while (operations != NULL)
 	{
 		check_operations(operations, &stack_a, &stack_b);
 		operations = operations->next;
 	}
-	if (!is_list_sorted(stack_a))
-		error_message("List is not sorted!");
-	ft_printf("Yes list is sorted!!\n");
+	if (!is_list_sorted(stack_a) && stack_b == NULL)
+		ft_putendl_fd("KO", STDOUT_FILENO);
+	else if (is_list_sorted(stack_a) && stack_b == NULL)
+		ft_putendl_fd("OK", STDOUT_FILENO);
 }
 
 int	main(int argc, char **argv)
@@ -186,6 +179,6 @@ int	main(int argc, char **argv)
 		numbers = &argv[1];
 		ps_checker(numbers);
 	}
-	free (numbers);
+	free_input(numbers);
 	return (0);
 }

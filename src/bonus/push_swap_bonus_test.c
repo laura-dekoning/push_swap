@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   push_swap_bonus.c                                  :+:    :+:            */
+/*   push_swap_bonus_test.c                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/20 15:40:38 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/04/24 17:56:30 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/05/07 16:30:18 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,6 @@ int	main(int argc, char **argv)
 		numbers = &argv[1];
 		push_swap_checker(numbers, STDIN_FILENO);
 	}
-	printf("Hoi ik ben hier\n");
+	printf("Hoi ik ben hier en de list is gesorteerd\n");
 	return (0);
 }

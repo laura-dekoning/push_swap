@@ -6,7 +6,7 @@
 #    By: lade-kon <lade-kon@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/04/17 17:52:22 by lade-kon      #+#    #+#                  #
-#    Updated: 2024/05/07 16:32:50 by lade-kon      ########   odam.nl          #
+#    Updated: 2024/05/07 19:18:45 by lade-kon      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,7 @@ SRC_FILES_BONUS	:=	$(addprefix $(SRC_BONUS)/, \
 					sorting_utils.c \
 					free_all.c \
 					error.c \
+					list_tests.c \
 					$(addprefix $(SRC_OPERATIONS)/, \
 					swap.c \
 					push.c \

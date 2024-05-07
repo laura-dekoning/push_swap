@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/24 16:03:50 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/05/07 16:09:22 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/05/07 19:08:15 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,9 @@ typedef struct s_check
 	struct s_check	*next;
 }					t_check;
 
-typedef struct s_ops
-{
-	char			*data;
-	struct s_ops	*next;
-}					t_ops;
-
-t_ops	*get_input(int fd);
+void	get_input(int fd, t_node **stack_a, t_node **stack_b);
 void	ps_checker(char **numbers);
-void	check_operations(t_ops *operation, t_node **stack_a, t_node **stack_b);
+int		do_operations(char *operation, t_node **stack_a, t_node **stack_b);
 void	print_list_all(t_node *head);
 
 #endif

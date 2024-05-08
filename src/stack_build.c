@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/18 12:33:56 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/04/20 17:15:24 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/05/08 20:59:08 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_node	*create_node(int data)
 
 	new_node = malloc(sizeof(t_node));
 	if (!new_node)
-		error_message("Allocation failed!");
+		error_message();
 	new_node->data = data;
 	new_node->index = 0;
 	new_node->next = NULL;

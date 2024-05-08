@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/24 17:57:36 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/05/07 19:34:26 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/05/08 20:56:18 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,24 @@ int	do_operations(char *operation, t_node **stack_a, t_node **stack_b)
 		ft_push(stack_b, stack_a);
 	else if (ft_strcmp(operation, "pa\n") == EXIT_SUCCESS)
 		ft_push(stack_a, stack_b);
-	else if (ft_strcmp(operation, "ra\n") == EXIT_SUCCESS)
-		ft_rotate(stack_a);
-	else if (ft_strcmp(operation, "rb\n") == EXIT_SUCCESS)
-		ft_rotate(stack_b);
-	else if (ft_strcmp(operation, "rr\n") == EXIT_SUCCESS)
-		ft_rr(stack_a, stack_b);
 	else if (ft_strcmp(operation, "sa\n") == EXIT_SUCCESS)
 		ft_swap(stack_a);
 	else if (ft_strcmp(operation, "sb\n") == EXIT_SUCCESS)
 		ft_swap(stack_b);
 	else if (ft_strcmp(operation, "ss\n") == EXIT_SUCCESS)
-		ft_ss(stack_a, stack_b);
+		ft_ss_rr_rrr(stack_a, stack_b, 0);
+	else if (ft_strcmp(operation, "ra\n") == EXIT_SUCCESS)
+		ft_rotate(stack_a);
+	else if (ft_strcmp(operation, "rb\n") == EXIT_SUCCESS)
+		ft_rotate(stack_b);
+	else if (ft_strcmp(operation, "rr\n") == EXIT_SUCCESS)
+		ft_ss_rr_rrr(stack_a, stack_b, 1);
 	else if (ft_strcmp(operation, "rra\n") == EXIT_SUCCESS)
 		ft_reverse_rotate(stack_a);
 	else if (ft_strcmp(operation, "rrb\n") == EXIT_SUCCESS)
 		ft_reverse_rotate(stack_b);
 	else if (ft_strcmp(operation, "rrr\n") == EXIT_SUCCESS)
-		ft_rrr(stack_a, stack_b);
+		ft_ss_rr_rrr(stack_a, stack_b, 2);
 	else
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);

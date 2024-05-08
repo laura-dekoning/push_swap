@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/05/07 19:35:20 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/05/07 19:37:41 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/05/08 20:57:45 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,21 @@ void	ft_reverse_rotate(t_node **head)
 	before_last->next = NULL;
 }
 
-void	ft_rr_or_ft_rrr()
+void	ft_ss_rr_rrr(t_node **stack_a, t_node **stack_b, int i)
+{
+	if (i == 0)
+	{
+		ft_swap(stack_a);
+		ft_swap(stack_b);
+	}
+	else if (i == 1)
+	{
+		ft_rotate(stack_a);
+		ft_rotate(stack_b);
+	}
+	else if (i == 2)
+	{
+		ft_reverse_rotate(stack_a);
+		ft_reverse_rotate(stack_b);
+	}
+}

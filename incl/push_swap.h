@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/17 19:25:22 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/05/07 14:49:21 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/05/08 20:59:40 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ bool	valid_input(char **argv);
 bool	no_duplicates(char **argv);
 
 /*Error*/
-void	error_message(char *message);
+void	error_message(void);
 
 /*Free*/
 void	free_list(t_node **head);

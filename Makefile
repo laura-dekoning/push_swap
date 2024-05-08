@@ -6,7 +6,7 @@
 #    By: lade-kon <lade-kon@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/04/17 17:52:22 by lade-kon      #+#    #+#                  #
-#    Updated: 2024/05/07 19:18:45 by lade-kon      ########   odam.nl          #
+#    Updated: 2024/05/08 20:46:56 by lade-kon      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,7 @@ SRC_FILES		:= 	push_swap.c \
 					five_sort.c \
 					radix_sort.c )
 SRC_FILES_BONUS	:=	$(addprefix $(SRC_BONUS)/, \
+					operations.c \
 					push_swap_bonus.c ) \
 					stack_build.c \
 					check_input.c \
@@ -59,11 +60,6 @@ SRC_FILES_BONUS	:=	$(addprefix $(SRC_BONUS)/, \
 					free_all.c \
 					error.c \
 					list_tests.c \
-					$(addprefix $(SRC_OPERATIONS)/, \
-					swap.c \
-					push.c \
-					rotate.c \
-					reverse_rotate.c )
 
 SRC				:=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))
 

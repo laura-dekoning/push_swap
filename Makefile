@@ -6,7 +6,7 @@
 #    By: lade-kon <lade-kon@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/04/17 17:52:22 by lade-kon      #+#    #+#                  #
-#    Updated: 2024/05/08 20:46:56 by lade-kon      ########   odam.nl          #
+#    Updated: 2024/05/08 21:30:47 by lade-kon      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,9 +26,10 @@ INCLUDES		:=	-I $(INCLS_PUSH_SWAP) -I $(INCLS_LIBFT)
 SRC_DIR			:=	src
 SRC_OPERATIONS	:=	operations
 SRC_SORTING		:=	sorting
-SRC_BONUS		:=	bonus
+SRC_DIR_BONUS	:=	bonus/src
 
-SRC_DIRS		:= $(SRC_DIR) $(SRC_OPERATIONS) $(SRC_SORTING) $(SRC_BONUS)
+SRC_DIRS		:=	$(SRC_DIR) $(SRC_OPERATIONS) $(SRC_SORTING)
+SRC_DIRS_BONUS	:=	$(SRC_BONUS) $(SRC_OPERATIONS) $(SRC_SORTING)
 
 SRC_FILES		:= 	push_swap.c \
 					stack_build.c \
@@ -51,9 +52,21 @@ SRC_FILES		:= 	push_swap.c \
 					four_sort.c \
 					five_sort.c \
 					radix_sort.c )
-SRC_FILES_BONUS	:=	$(addprefix $(SRC_BONUS)/, \
+SRC_FILES_BONUS	:=	$(addprefix $(SRC_OPERATIONS)/, \
 					operations.c \
-					push_swap_bonus.c ) \
+					swap.c \
+					push.c \
+					rotate.c \
+					reverse_rotate.c ) \
+					$(addprefix $(SRC_SORTING)/, \
+					pre_sort.c \
+					select_sort.c \
+					two_sort.c \
+					three_sort.c \
+					four_sort.c \
+					five_sort.c \
+					radix_sort.c )
+					push_swap_bonus.c \
 					stack_build.c \
 					check_input.c \
 					sorting_utils.c \
@@ -62,6 +75,7 @@ SRC_FILES_BONUS	:=	$(addprefix $(SRC_BONUS)/, \
 					list_tests.c \
 
 SRC				:=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))
+SRC_BONUS		:=	$(addprefix $(SRC_DIR_BONUS)/, $(SRC_FILES_BONUS))
 
 OBJ_DIR			:=	obj
 OBJ_DIR_BONUS	:=	bonus

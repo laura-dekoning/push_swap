@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/24 17:57:36 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/05/08 20:56:18 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/05/08 21:19:21 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	get_input(int fd, t_node **stack_a, t_node **stack_b)
 	while (line)
 	{
 		if (do_operations(line, stack_a, stack_b) != EXIT_SUCCESS)
-			error_message("Error");
+			error_message();
 		free(line);
 		line = get_next_line(fd);
 	}
@@ -62,7 +62,7 @@ void	ps_checker(char **numbers)
 	t_node	*stack_b;
 
 	if (valid_input(numbers) == false)
-		error_message("Error");
+		error_message();
 	stack_a = make_list(numbers);
 	stack_b = NULL;
 	get_input(STDIN_FILENO, &stack_a, &stack_b);
@@ -83,7 +83,7 @@ int	main(int argc, char **argv)
 	{
 		numbers = ft_split(argv[1], ' ');
 		if (!numbers)
-			error_message("Error");
+			error_message();
 		ps_checker(numbers);
 		free_input(numbers);
 	}
@@ -93,4 +93,21 @@ int	main(int argc, char **argv)
 		ps_checker(numbers);
 	}
 	return (0);
+}
+
+void	ps_checker(char **numbers)
+{
+	t_node	*stack_a;
+	t_node	*stack_b;
+
+	if (valid_input(numbers) == false)
+		error_message();
+	stack_a = make_list(numbers);
+	stack_b = NULL;
+	get_input(STDIN_FILENO, &stack_a, &stack_b);
+	if (!is_list_sorted(stack_a) && stack_b == NULL)
+		ft_putendl_fd("KO", STDOUT_FILENO);
+	else if (is_list_sorted(stack_a) && stack_b == NULL)
+		ft_putendl_fd("OK", STDOUT_FILENO);
+	free_list(&stack_a);
 }

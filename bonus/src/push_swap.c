@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/17 19:30:18 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/05/08 21:07:46 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/05/08 21:40:46 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	push_swap(char **input)
 {
 	t_node	*stack_a;
 	t_node	*stack_b;
+	int		fd;
 
 	if (valid_input(input) == false)
 		error_message();
@@ -23,8 +24,9 @@ int	push_swap(char **input)
 	stack_b = NULL;
 	if (is_list_sorted(stack_a))
 		return (free_list(&stack_a), 0);
-	pre_sort(&stack_a);
-	select_sort(&stack_a, &stack_b);
+	fd = open("operations.txt", )
+	pre_sort(&stack_a, fd);
+	select_sort(&stack_a, &stack_b, fd);
 	return (free_list(&stack_a), 0);
 }
 

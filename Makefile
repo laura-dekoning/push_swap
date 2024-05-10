@@ -6,7 +6,7 @@
 #    By: lade-kon <lade-kon@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/04/17 17:52:22 by lade-kon      #+#    #+#                  #
-#    Updated: 2024/05/10 15:24:37 by lade-kon      ########   odam.nl          #
+#    Updated: 2024/05/10 16:47:38 by lade-kon      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -111,6 +111,7 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
+	@rm -f $(NAME_BONUS)
 	@make -C $(LIBFT_DIR) fclean > /dev/null
 
 re: fclean all

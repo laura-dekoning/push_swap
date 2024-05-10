@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/24 16:03:50 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/05/10 15:19:52 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/05/10 16:34:54 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 # include "libft.h"
 # include "colors.h"
 # include "push_swap.h"
+
+typedef struct s_ops
+{
+	char			*op;
+	struct s_ops	*next;
+}					t_ops;
 
 /*Checker functions >>> Maybe divide better*/
 void	get_input(int fd, t_node **stack_a, t_node **stack_b);

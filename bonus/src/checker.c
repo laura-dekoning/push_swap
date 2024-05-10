@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/24 17:57:36 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/05/08 21:19:21 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/05/10 14:37:42 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,31 @@
 
 int	do_operations(char *operation, t_node **stack_a, t_node **stack_b)
 {
-	if (ft_strcmp(operation, "pb\n") == EXIT_SUCCESS)
+	if (ft_strcmp(operation, "pb\n") == 0)
 		ft_push(stack_b, stack_a);
-	else if (ft_strcmp(operation, "pa\n") == EXIT_SUCCESS)
+	else if (ft_strcmp(operation, "pa\n") == 0)
 		ft_push(stack_a, stack_b);
-	else if (ft_strcmp(operation, "sa\n") == EXIT_SUCCESS)
+	else if (ft_strcmp(operation, "sa\n") == 0)
 		ft_swap(stack_a);
-	else if (ft_strcmp(operation, "sb\n") == EXIT_SUCCESS)
+	else if (ft_strcmp(operation, "sb\n") == 0)
 		ft_swap(stack_b);
-	else if (ft_strcmp(operation, "ss\n") == EXIT_SUCCESS)
+	else if (ft_strcmp(operation, "ss\n") == 0)
 		ft_ss_rr_rrr(stack_a, stack_b, 0);
-	else if (ft_strcmp(operation, "ra\n") == EXIT_SUCCESS)
+	else if (ft_strcmp(operation, "ra\n") == 0)
 		ft_rotate(stack_a);
-	else if (ft_strcmp(operation, "rb\n") == EXIT_SUCCESS)
+	else if (ft_strcmp(operation, "rb\n") == 0)
 		ft_rotate(stack_b);
-	else if (ft_strcmp(operation, "rr\n") == EXIT_SUCCESS)
+	else if (ft_strcmp(operation, "rr\n") == 0)
 		ft_ss_rr_rrr(stack_a, stack_b, 1);
-	else if (ft_strcmp(operation, "rra\n") == EXIT_SUCCESS)
+	else if (ft_strcmp(operation, "rra\n") == 0)
 		ft_reverse_rotate(stack_a);
-	else if (ft_strcmp(operation, "rrb\n") == EXIT_SUCCESS)
+	else if (ft_strcmp(operation, "rrb\n") == 0)
 		ft_reverse_rotate(stack_b);
-	else if (ft_strcmp(operation, "rrr\n") == EXIT_SUCCESS)
+	else if (ft_strcmp(operation, "rrr\n") == 0)
 		ft_ss_rr_rrr(stack_a, stack_b, 2);
 	else
-		return (EXIT_FAILURE);
-	return (EXIT_SUCCESS);
+		return (1);
+	return (0);
 }
 
 void	get_input(int fd, t_node **stack_a, t_node **stack_b)
@@ -48,7 +48,7 @@ void	get_input(int fd, t_node **stack_a, t_node **stack_b)
 	line = get_next_line(fd);
 	while (line)
 	{
-		if (do_operations(line, stack_a, stack_b) != EXIT_SUCCESS)
+		if (do_operations(line, stack_a, stack_b) != 0)
 			error_message();
 		free(line);
 		line = get_next_line(fd);
@@ -66,10 +66,10 @@ void	ps_checker(char **numbers)
 	stack_a = make_list(numbers);
 	stack_b = NULL;
 	get_input(STDIN_FILENO, &stack_a, &stack_b);
-	if (!is_list_sorted(stack_a) && stack_b == NULL)
-		ft_putendl_fd("KO", STDOUT_FILENO);
-	else if (is_list_sorted(stack_a) && stack_b == NULL)
+	if (is_list_sorted(stack_a) && stack_b == NULL)
 		ft_putendl_fd("OK", STDOUT_FILENO);
+	else
+		ft_putendl_fd("KO", STDOUT_FILENO);
 	free_list(&stack_a);
 }
 
@@ -95,19 +95,3 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-void	ps_checker(char **numbers)
-{
-	t_node	*stack_a;
-	t_node	*stack_b;
-
-	if (valid_input(numbers) == false)
-		error_message();
-	stack_a = make_list(numbers);
-	stack_b = NULL;
-	get_input(STDIN_FILENO, &stack_a, &stack_b);
-	if (!is_list_sorted(stack_a) && stack_b == NULL)
-		ft_putendl_fd("KO", STDOUT_FILENO);
-	else if (is_list_sorted(stack_a) && stack_b == NULL)
-		ft_putendl_fd("OK", STDOUT_FILENO);
-	free_list(&stack_a);
-}

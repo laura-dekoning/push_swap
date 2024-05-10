@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/24 17:57:36 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/05/10 16:46:43 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/05/10 16:49:19 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	get_input(int fd, t_node **stack_a, t_node **stack_b)
 	while (1)
 	{
 		if (!line)
-			break;
+			break ;
 		if (do_operations(line, stack_a, stack_b) != 0)
 			error_message();
 		free(line);
@@ -110,4 +110,3 @@ int	main(int argc, char **argv)
 	}
 	return (0);
 }
-

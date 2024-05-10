@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   push_swap_bonus.c                                  :+:    :+:            */
+/*   checker.c                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/24 17:57:36 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/05/10 14:37:42 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/05/10 15:21:33 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,27 @@
 int	do_operations(char *operation, t_node **stack_a, t_node **stack_b)
 {
 	if (ft_strcmp(operation, "pb\n") == 0)
-		ft_push(stack_b, stack_a);
+		ft_do_push(stack_b, stack_a);
 	else if (ft_strcmp(operation, "pa\n") == 0)
-		ft_push(stack_a, stack_b);
+		ft_do_push(stack_a, stack_b);
 	else if (ft_strcmp(operation, "sa\n") == 0)
-		ft_swap(stack_a);
+		ft_do_swap(stack_a);
 	else if (ft_strcmp(operation, "sb\n") == 0)
-		ft_swap(stack_b);
+		ft_do_swap(stack_b);
 	else if (ft_strcmp(operation, "ss\n") == 0)
-		ft_ss_rr_rrr(stack_a, stack_b, 0);
+		ft_do_ss_rr_rrr(stack_a, stack_b, 0);
 	else if (ft_strcmp(operation, "ra\n") == 0)
-		ft_rotate(stack_a);
+		ft_do_rotate(stack_a);
 	else if (ft_strcmp(operation, "rb\n") == 0)
-		ft_rotate(stack_b);
+		ft_do_rotate(stack_b);
 	else if (ft_strcmp(operation, "rr\n") == 0)
-		ft_ss_rr_rrr(stack_a, stack_b, 1);
+		ft_do_ss_rr_rrr(stack_a, stack_b, 1);
 	else if (ft_strcmp(operation, "rra\n") == 0)
-		ft_reverse_rotate(stack_a);
+		ft_do_reverse_rotate(stack_a);
 	else if (ft_strcmp(operation, "rrb\n") == 0)
-		ft_reverse_rotate(stack_b);
+		ft_do_reverse_rotate(stack_b);
 	else if (ft_strcmp(operation, "rrr\n") == 0)
-		ft_ss_rr_rrr(stack_a, stack_b, 2);
+		ft_do_ss_rr_rrr(stack_a, stack_b, 2);
 	else
 		return (1);
 	return (0);

@@ -6,7 +6,7 @@
 #    By: lade-kon <lade-kon@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/04/17 17:52:22 by lade-kon      #+#    #+#                  #
-#    Updated: 2024/05/10 14:54:15 by lade-kon      ########   odam.nl          #
+#    Updated: 2024/05/10 15:24:37 by lade-kon      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,7 @@ SRC_DIR			:=	src
 SRC_OPERATIONS	:=	operations
 SRC_SORTING		:=	sorting
 
-SRC_DIRS		:=	$(SRC_DIR) $(SRC_OPERATIONS) $(SRC_SORTING)
-SRC_DIRS_BONUS	:=	$(SRC_DIR) $(SRC_OPERATIONS) $(SRC_SORTING)
+SRC_DIRS		:=	$(SRC_OPERATIONS) $(SRC_SORTING)
 
 SRC_FILES		:= 	push_swap.c \
 					stack_build.c \
@@ -56,12 +55,12 @@ SRC_FILES		:= 	push_swap.c \
 					five_sort.c \
 					radix_sort.c )
 SRC_FILES_BONUS	:=	checker.c \
-					$(addprefix $(SRC_OPERATIONS)/, \
 					operations.c \
-					swap.c \
-					push.c \
-					rotate.c \
-					reverse_rotate.c ) \
+					check_input.c \
+					free_all.c \
+					error.c \
+					stack_build.c \
+					sorting_utils.c \
 
 SRC				:=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))
 SRC_BONUS		:=	$(addprefix $(BONUS_DIR)/$(SRC_DIR)/, $(SRC_FILES_BONUS))
@@ -70,7 +69,7 @@ OBJ_DIR			:=	obj
 OBJ_DIR_BONUS	:=	bonus
 OBJ_FILES		:=	$(SRC_FILES:.c=.o)
 OBJ_FILES_BONUS	:=	$(SRC_FILES_BONUS:.c=.o)
-OBJ				:=	$(addprefix $(OBJ_DIR)/, $(OBJ_FILES))
+OBJ				:=	$(addprefix $(OBJ_DIR)/$(SRC_DIR)/, $(OBJ_FILES))
 OBJ_BONUS		:=	$(addprefix $(OBJ_DIR)/$(OBJ_DIR_BONUS)/, $(OBJ_FILES_BONUS))
 
 .PHONY : all clean fclean re
@@ -84,9 +83,9 @@ $(LIBFT_A):
 $(NAME): $(OBJ) $(LIBFT_A)
 	$(CC) $(CFLAGS) $(OBJ) $(INCLUDES) $(LIBFT_A) -o $(NAME)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(OBJ_DIR)
-	@mkdir -p $(addprefix $(OBJ_DIR)/, $(SRC_DIRS))
+$(OBJ_DIR)/$(SRC_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(OBJ_DIR)/$(SRC_DIR)
+	@mkdir -p $(addprefix $(OBJ_DIR)/$(SRC_DIR)/, $(SRC_DIRS))
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 bonus: $(NAME) $(NAME_BONUS)
@@ -95,8 +94,7 @@ $(NAME_BONUS): $(OBJ_BONUS) $(LIBFT_A)
 	$(CC) $(CFLAGS) $(OBJ_BONUS) $(INCLUDES_BONUS) $(LIBFT_A) -o $(NAME_BONUS)
 
 $(OBJ_DIR)/$(OBJ_DIR_BONUS)/%.o: $(BONUS_DIR)/$(SRC_DIR)/%.c
-	@mkdir -p $(addprefix $(OBJ_DIR)/, $(OBJ_DIR_BONUS))
-	@mkdir -p $(addprefix $(OBJ_DIR_BONUS)/, $(SRC_DIRS_BONUS))
+	@mkdir -p $(OBJ_DIR)/$(OBJ_DIR_BONUS)/$(SRC_DIR)
 	@$(CC) $(CFLAGS) $(INCLUDES_BONUS) -c $< -o $@
 
 norminette:

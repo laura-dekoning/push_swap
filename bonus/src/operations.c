@@ -6,13 +6,13 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/05/07 19:35:20 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/05/08 20:57:45 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/05/10 15:20:31 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-void	ft_push(t_node **head_dest, t_node **head_src)
+void	ft_do_push(t_node **head_dest, t_node **head_src)
 {
 	t_node	*tmp;
 
@@ -24,7 +24,7 @@ void	ft_push(t_node **head_dest, t_node **head_src)
 	*head_src = tmp;
 }
 
-void	ft_swap(t_node **head)
+void	ft_do_swap(t_node **head)
 {
 	t_node	*first;
 	t_node	*second;
@@ -38,7 +38,7 @@ void	ft_swap(t_node **head)
 	*head = second;
 }
 
-void	ft_rotate(t_node **head)
+void	ft_do_rotate(t_node **head)
 {
 	t_node	*last;
 
@@ -50,7 +50,7 @@ void	ft_rotate(t_node **head)
 	last->next->next = NULL;
 }
 
-void	ft_reverse_rotate(t_node **head)
+void	ft_do_reverse_rotate(t_node **head)
 {
 	t_node	*last;
 	t_node	*before_last;
@@ -64,21 +64,21 @@ void	ft_reverse_rotate(t_node **head)
 	before_last->next = NULL;
 }
 
-void	ft_ss_rr_rrr(t_node **stack_a, t_node **stack_b, int i)
+void	ft_do_ss_rr_rrr(t_node **stack_a, t_node **stack_b, int i)
 {
 	if (i == 0)
 	{
-		ft_swap(stack_a);
-		ft_swap(stack_b);
+		ft_do_swap(stack_a);
+		ft_do_swap(stack_b);
 	}
 	else if (i == 1)
 	{
-		ft_rotate(stack_a);
-		ft_rotate(stack_b);
+		ft_do_rotate(stack_a);
+		ft_do_rotate(stack_b);
 	}
 	else if (i == 2)
 	{
-		ft_reverse_rotate(stack_a);
-		ft_reverse_rotate(stack_b);
+		ft_do_reverse_rotate(stack_a);
+		ft_do_reverse_rotate(stack_b);
 	}
 }

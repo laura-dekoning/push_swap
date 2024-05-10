@@ -1,25 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   push.c                                             :+:    :+:            */
+/*   free_all.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/04/20 15:56:19 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/05/08 21:18:12 by lade-kon      ########   odam.nl         */
+/*   Created: 2024/04/18 16:23:24 by lade-kon      #+#    #+#                 */
+/*   Updated: 2024/04/24 16:25:32 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_bonus.h"
+#include "push_swap.h"
 
-void	ft_pa(t_node **stack_a, t_node **stack_b, int fd)
+void	free_list(t_node **head)
 {
-	ft_push(stack_a, stack_b);
-	ft_putstr_fd("pa\n", fd);
+	t_node	*temp;
+	t_node	*next;
+
+	temp = *head;
+	next = NULL;
+	while (temp)
+	{
+		next = temp->next;
+		free (temp);
+		temp = next;
+	}
+	*head = NULL;
 }
 
-void	ft_pb(t_node **stack_a, t_node **stack_b, int fd)
+void	free_input(char **input)
 {
-	ft_push(stack_b, stack_a);
-	ft_putstr_fd("pb\n", fd);
+	int	i;
+
+	i = 0;
+	while (input[i])
+	{
+		free (input[i]);
+		i++;
+	}
+	free (input);
 }

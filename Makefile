@@ -6,7 +6,7 @@
 #    By: lade-kon <lade-kon@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/04/17 17:52:22 by lade-kon      #+#    #+#                  #
-#    Updated: 2024/05/15 16:06:48 by lade-kon      ########   odam.nl          #
+#    Updated: 2024/05/15 17:45:39 by lade-kon      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME			:=	push_swap
 NAME_BONUS		:=	checker
 
 CC				:=	cc
-CFLAGS			:= -Wall -Werror -Wextra -g -fsanitize=address
+CFLAGS			:= -Wall -Werror -Wextra #-g -fsanitize=address
 
 LIBFT_DIR		:=	lib/libft
 LIBFT_A			:=	$(LIBFT_DIR)/libft.a

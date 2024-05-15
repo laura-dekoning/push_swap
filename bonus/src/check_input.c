@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/20 15:37:25 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/05/07 14:16:55 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/05/15 15:55:17 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,8 @@ bool	no_duplicates(char **argv)
 		j = i + 1;
 		while (argv[j])
 		{
-			n = ft_atol(argv[i]);
-			if (n == ft_atol(argv[j]))
-				return (false);
-			else if (n < INT_MIN || n > INT_MAX)
+			n = ft_atoi_pushswap(argv[i]);
+			if (n == ft_atoi_pushswap(argv[j]))
 				return (false);
 			else
 				j++;

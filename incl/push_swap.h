@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/17 19:25:22 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/05/08 20:59:40 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/05/15 15:51:59 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	radix_sort(t_node **stack_a, t_node **stack_b);
 int		count_nodes(t_node **head);
 int		is_list_sorted(t_node *head);
 t_node	*is_lowest_index(t_node **stack_a);
+int		ft_atoi_pushswap(const char *str);
 
 /*List test functions*/
 void	print_data_node(t_node *node);

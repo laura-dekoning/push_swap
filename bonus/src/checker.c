@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/24 17:57:36 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/05/10 16:49:19 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/05/15 16:17:14 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,35 +41,19 @@ int	do_operations(char *operation, t_node **stack_a, t_node **stack_b)
 	return (0);
 }
 
-// void	get_input(int fd, t_node **stack_a, t_node **stack_b)
-// {
-// 	char	*line;
-
-// 	line = get_next_line(fd);
-// 	while (line)
-// 	{
-// 		if (do_operations(line, stack_a, stack_b) != 0)
-// 			error_message();
-// 		free(line);
-// 		line = get_next_line(fd);
-// 	}
-// 	free(line);
-// }
-
 void	get_input(int fd, t_node **stack_a, t_node **stack_b)
 {
 	char	*line;
 
 	line = get_next_line(fd);
-	while (1)
+	while (line)
 	{
-		if (!line)
-			break ;
 		if (do_operations(line, stack_a, stack_b) != 0)
 			error_message();
 		free(line);
 		line = get_next_line(fd);
 	}
+	free(line);
 }
 
 void	ps_checker(char **numbers)
@@ -83,9 +67,13 @@ void	ps_checker(char **numbers)
 	stack_b = NULL;
 	get_input(STDIN_FILENO, &stack_a, &stack_b);
 	if (is_list_sorted(stack_a) && stack_b == NULL)
-		ft_putstrendl_fd("OK", STDOUT_FILENO);
+		ft_putendl_fd("OK", STDOUT_FILENO);
 	else
+	{
+		if (stack_b != NULL)
+			free_list(&stack_b);
 		ft_putendl_fd("KO", STDOUT_FILENO);
+	}
 	free_list(&stack_a);
 }
 

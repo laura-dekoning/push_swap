@@ -6,7 +6,7 @@
 #    By: lade-kon <lade-kon@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/04/17 17:52:22 by lade-kon      #+#    #+#                  #
-#    Updated: 2024/05/10 16:47:38 by lade-kon      ########   odam.nl          #
+#    Updated: 2024/05/15 16:06:48 by lade-kon      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME			:=	push_swap
 NAME_BONUS		:=	checker
 
 CC				:=	cc
-CFLAGS			:= -Wall -Werror -Wextra #-g -fsanitize=address
+CFLAGS			:= -Wall -Werror -Wextra -g -fsanitize=address
 
 LIBFT_DIR		:=	lib/libft
 LIBFT_A			:=	$(LIBFT_DIR)/libft.a
@@ -41,6 +41,7 @@ SRC_FILES		:= 	push_swap.c \
 					error.c \
 					list_tests.c \
 					node_tests.c \
+					ft_atoi_pushswap.c \
 					$(addprefix $(SRC_OPERATIONS)/, \
 					swap.c \
 					push.c \
@@ -61,6 +62,7 @@ SRC_FILES_BONUS	:=	checker.c \
 					error.c \
 					stack_build.c \
 					sorting_utils.c \
+					ft_atoi_pushswap.c \
 
 SRC				:=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))
 SRC_BONUS		:=	$(addprefix $(BONUS_DIR)/$(SRC_DIR)/, $(SRC_FILES_BONUS))

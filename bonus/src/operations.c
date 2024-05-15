@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/05/07 19:35:20 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/05/10 16:49:25 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/05/15 16:12:35 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ void	ft_do_swap(t_node **head)
 	t_node	*first;
 	t_node	*second;
 
+	if (*head == NULL || (*head)->next == NULL)
+		return ;
 	first = *head;
 	second = first->next;
-	if (head == NULL || first->next == NULL)
-		return ;
 	first->next = second->next;
 	second->next = first;
 	*head = second;
@@ -42,7 +42,7 @@ void	ft_do_rotate(t_node **head)
 {
 	t_node	*last;
 
-	if (head == NULL || (*head)->next == NULL)
+	if (*head == NULL || (*head)->next == NULL)
 		return ;
 	last = find_last_node(*head);
 	last->next = *head;
@@ -55,7 +55,7 @@ void	ft_do_reverse_rotate(t_node **head)
 	t_node	*last;
 	t_node	*before_last;
 
-	if (head == NULL || (*head)->next == NULL)
+	if (*head == NULL || (*head)->next == NULL)
 		return ;
 	last = find_last_node(*head);
 	before_last = before_last_node(head, last);
